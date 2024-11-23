@@ -24,6 +24,23 @@ def modify_file(input_filename, output_filename):
 modify_file("input.txt","output.txt")
 
 
+# Error handling Lab: Ask the user for a filename and handle errors if it doesn't exist or can't be read
+def get_filename():
+    while True:
+        filename = input("Please enter the filename ")
+        try:
+            with open(filename, 'r')as file:
+                file.read()
+                print(f'{filename} can be read from')
+                return
+        except FileNotFoundError:
+            print("File does not exist")
+        except PermissionError:
+            print(f"Permission denied to read {filename} or file {filename} cannot be read. Please try another file")
+
+get_filename()
+
+
 
 
 
